@@ -15,7 +15,7 @@ fun createDatabaseTables(database: SQLiteDatabase?) = safeQuery {
 	            manufactureId INTEGER NOT NULL,
 	            description TEXT NOT NULL,
 	            dateProduction TEXT NOT NULL,
-	            price REAL NOT NULL,
+	            price DECIMAL(5, 2) NOT NULL,
 	            PRIMARY KEY (id, manufactureId),
 	            FOREIGN KEY (manufactureId) REFERENCES manufacture(id)
             );          
@@ -24,17 +24,17 @@ fun createDatabaseTables(database: SQLiteDatabase?) = safeQuery {
 
     database.execSQL(
         """
-                CREATE TABLE manufacture (
-                	id INTEGER PRIMARY KEY NOT NULL,
-                	name TEXT NOT NULL,
-                	country TEXT NOT NULL,
-                	email TEXT NOT NULL,
-                	website TEXT NOT NULL,
-                	zipCode INTEGER NOT NULL,
-                	dateFounding TEXT NOT NULL,
-                	revenue NUMERIC(5,2)
-                );
-            """.trimIndent()
+        CREATE TABLE manufacture (
+               id INTEGER PRIMARY KEY NOT NULL,
+               name TEXT NOT NULL,
+               country TEXT NOT NULL,
+               email TEXT NOT NULL,
+               website TEXT NOT NULL,
+               zipCode INTEGER NOT NULL,
+               dateFounding TEXT NOT NULL,
+               revenue DECIMAL(5,2)
+            );    
+        """.trimIndent()
     )
 }
 
